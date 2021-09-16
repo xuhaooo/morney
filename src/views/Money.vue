@@ -28,10 +28,9 @@ import store from '@/store/index2'
 })
 export default class Money extends Vue {
   tags = store.tagList
-  // eslint-disable-next-line no-undef
   recordList = store.recordList
   // eslint-disable-next-line no-undef
-  record: RecordItem = {
+  record:RecordItem = {
     tags: [],
     notes: '',
     type: '-',
