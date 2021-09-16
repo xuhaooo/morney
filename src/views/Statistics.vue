@@ -28,7 +28,7 @@ export default class Statistics extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  ::v-deep .type-tabs-item {
+::v-deep .type-tabs-item {
    background: white;
    &.selected {
      background: #c4c4c4;
@@ -37,4 +37,7 @@ export default class Statistics extends Vue {
      }
    }
  }
+::v-deep .interval-tabs-item {
+  height: 48px;
+}
 </style>
