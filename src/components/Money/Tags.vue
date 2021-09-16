@@ -19,15 +19,16 @@ import {Component} from 'vue-property-decorator';
 @Component({
   computed: {
     tagList(){
-      // return this.$store.fetchTags()
-      return []
+      return this.$store.state.tagList
     }
   }
 })
 export default class Tags extends Vue {
-  // TODO
-  // tagList = this.$store.fetchTags();
   selectedTags: string[] = [];
+
+  created(){
+    this.$store.commit('fetchTags')
+  }
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -46,8 +47,7 @@ export default class Tags extends Vue {
     } else if(name === null) {
       return;
     } else{
-      // TODO
-      // this.$store.createTag(name)
+      this.$store.commit('createTag', name);
     }
   }
 }
