@@ -3,23 +3,21 @@
 # 当发生错误时中止脚本
 set -e
 
-# 构建
-yarn build
+rm -rf dist &&
+yarn build &&
+cd dist &&
+git init &&
+git add . &&
+git commit -m deploy &&
 
-# cd 到构建输出的目录下
-cd dist
+# 部署到 GitHub
+git remote add origin git@github.com:xuhaooo/morney-website.git &&
+git push -u -f origin master &&
 
-# 部署到自定义域域名
-# echo 'www.example.com' > CNAME
-
-git init
-git add -A
-git commit -m 'deploy'
-
-# 部署到 https://<USERNAME>.github.io
-# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
-
-# 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:xuhaooo/morney-website.git master:gh-pages
+# 部署到码云
+git remote add gitee git@gitee.com:bingoxuhao/morney-website.git &&
+git push -f gitee master &&
 
 cd -
+echo https://bingoxuhao.gitee.io/morney-website
+echo https://xuhaooo.github.io/morney-website/index.html
