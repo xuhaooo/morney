@@ -30,8 +30,12 @@ const routes: Array<RouteConfig> = [
     component: EditLabel
   },
   {
-    path: '*',
+    path: '/404',
     component: NotFound
+  },
+  {
+    path: '*',
+    redirect: '/404'
   }
 ];
 
