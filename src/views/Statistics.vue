@@ -1,7 +1,9 @@
 <template>
     <Layout>
       <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
-      <Chart :options="x"/>
+      <div class="chart-wrapper" ref="chartWrapper">
+        <Chart class="chart" :options="x"/>
+      </div>
       <ol v-if="groupedList.length>0">
         <li v-for="(group,index) in groupedList" :key="index">
           <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
@@ -54,8 +56,16 @@ export default class Statistics extends Vue {
     }
   }
 
+  mounted() {
+    (this.$refs.chartWrapper as HTMLDivElement).scrollLeft = 9999
+  }
+
   get x() {
     return {
+      grid: {
+        left: 0,
+        right: 0,
+      },
       xAxis: {
         type: 'category',
         data: [
@@ -67,15 +77,15 @@ export default class Statistics extends Vue {
         ]
       },
       yAxis: {
-        type: 'value'
+        type: 'value',
+        show: false
       },
       series: [{
         data: [
           820, 932, 901, 934, 1290, 1330, 1320,
           820, 932, 901, 934, 1290, 1330, 1320,
           820, 932, 901, 934, 1290, 1330, 1320,
-          820, 932, 901, 934, 1290, 1330, 1320,
-          820, 932
+          820, 932, 901, 934, 1290, 1330, 1320, 1,2
         ],
         type: 'line'
       }],
@@ -168,5 +178,12 @@ export default class Statistics extends Vue {
   text-overflow: ellipsis;
   white-space: nowrap;
   color: #999;
+}
+
+.chart {
+  width: 428.57%;
+  &-wrapper {
+    overflow: auto;
+  }
 }
 </style>
