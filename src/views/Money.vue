@@ -14,7 +14,7 @@
                   placeholder="在这里输入备注"
                   :value.sync="record.notes"/>
       </div>
-      <Tags @update:value="record.tags = $event"/>
+      <Tags @update:value="record.tags = $event" ref="tags"/>
     </Layout>
   </div>
 </template>
@@ -27,7 +27,6 @@ import Tags from '@/components/Money/Tags.vue';
 import {Component} from 'vue-property-decorator';
 import recordTypeList from '@/constants/recordTypeList';
 import Tabs from '@/components/Tabs.vue';
-
 
 @Component({
   components: {Tabs, Tags, FormItem, NumberPad}
@@ -52,13 +51,12 @@ export default class Money extends Vue {
     this.$store.commit('fetchRecords')
   }
 
-
-
   saveRecord() {
     if (!this.record.tags || this.record.tags.length === 0){
       return window.alert('请至少选择一个标签')
     }
     this.$store.commit('createRecord', this.record)
+    this.$refs.tags.selectedTags = []
     if(this.$store.state.createRecordError === null){
       window.alert('已保存')
       this.record.notes = ''

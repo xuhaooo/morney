@@ -33,7 +33,7 @@ const store = new Vuex.Store({
         state.tagList = []
         store.commit('createTag', '公交')
         store.commit('createTag', '三餐')
-        store.commit('createTag', '衣服')
+        store.commit('createTag', '薪水')
         store.commit('createTag', '房租')
       }
     },
