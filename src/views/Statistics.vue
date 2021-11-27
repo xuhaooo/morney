@@ -17,7 +17,7 @@
         </li>
       </ol>
       <div v-else class="noResult">
-        目前没有相关记录
+        当前没有记录！赶快去记一笔吧~
       </div>
     </Layout>
 </template>
