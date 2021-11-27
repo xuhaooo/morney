@@ -51,4 +51,10 @@ if(document.documentElement.clientWidth > 500){
   img.style.transform = 'translate(-50%, -50%)'
   img.style.boxShadow = '0 0 10px rgba(0,0,0,0.25)'
   document.body.appendChild(img)
+  document.body.onclick = () => {
+    if(img){
+      img.style.display = 'none'
+    }
+  }
 }
+
