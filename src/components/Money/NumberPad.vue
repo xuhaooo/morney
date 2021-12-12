@@ -66,6 +66,7 @@ export default class NumberPad extends Vue {
 @import "~@/assets/style/helper.scss";
 
 .numberPad {
+  color: #333;
   .output {
     @extend %innerShadow;
     font-size: 36px;
